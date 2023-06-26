@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -19,21 +19,14 @@ const Login = () => {
             password: password,
         }).then((res) => {
             console.log(res);
-            localStorage.setItem("username", res.data.username);
-            console.log(res.data.username);
+
+            localStorage.setItem("username", JSON.stringify(res.data.data));
             navigate("/home");
         }).catch((err) => {
             console.log(err);
         })
-
     }
-    useEffect(() => {
-        axios.get("http://localhost:8000/users/verifytoken")
-            .then((res) => {
-                console.log(res);
-            })
 
-    }, [])
 
     return (
         <>
