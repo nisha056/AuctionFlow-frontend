@@ -24,19 +24,23 @@ const LikedProduct = () => {
     return (
         <>
             <p className=" flex justify-center items-center mt-10 font-bold">These are the list of the items that I liked:</p>
-            {
-                likes.length ?
-                    likes?.map((product: any) => {
-                        return (
-                            <div className="grid grid-cols-4 mt-20 mx-10 gap-y-5 ">
-                                <LikedCard key={product._id} details={product} />
-                            </div>
+            <div className="items-center justify-center">
+                <div className="grid gap-10 grid-cols-4 mx-10 mt-10">
+                    {
+                        likes.length ?
+                            likes?.map((product: any) => {
+                                return (
+                                    <LikedCard key={product._id} details={product} />
 
-                        )
-                    })
-                    :
-                    <>No Items to show</>
-            }
+                                )
+                            })
+                            :
+                            <>No Items to show</>
+                    }
+                </div>
+
+            </div>
+
         </>
 
     )

@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './components/home'
-import LikedProduct from './components/likedProduct'
+import Home from './components/home/home'
+import LikedProduct from './components/likeProducts/likedProduct'
 import Login from './components/login'
-import MyProduct from './components/myProduct'
 import SignUp from './components/signup'
 import ErrorPage from './ErrorPage'
 import './index.css'
@@ -31,10 +30,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <SignUp />
-      },
-      {
-        path: "/my_products",
-        element: <MyProduct />
       },
       {
         path: "/likes",
