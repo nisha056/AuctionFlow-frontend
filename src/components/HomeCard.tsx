@@ -21,6 +21,7 @@ const HomeCard = (props: any) => {
                     toast.success("Product is liked");
                 }
             }
+            console.log(response);
         } catch (err) {
             console.error(err)
         }
