@@ -17,7 +17,8 @@ const HomeCard = (props: any) => {
     const handleClick = async () => {
         try {
 
-            const response = await axios.post(`http://localhost:8000/products/like/${props.details?._id}`, { user_id: user?._id });
+            const response = await axios.post(`http://localhost:8000/products/like/${props.details?._id}`,
+                { user_id: user?._id });
             const item = response.data?.data?.title;
             if (response.data?.success) {
                 setProductDetails(response.data?.data);
@@ -42,9 +43,9 @@ const HomeCard = (props: any) => {
                 }} product_id={props?.details?._id} />
             </Modal>
 
-            <Card className=" p-0">
+            <Card className=" p-0" style={{ backgroundColor: "whiteblue" }}>
                 <div className="flex flex-col  ">
-                    <div className="flex items-center justify-center object-fill">
+                    <div className="flex items-center justify-center">
                         {/* <Card style={{}}> */}
 
                         <img src={props.details?.image}

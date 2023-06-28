@@ -25,12 +25,12 @@ const LikedProduct = () => {
 
     return (
         <>
-            <div className="fixed top-0 z-10 mb-5 w-full">
+            <div className="fixed top-0 z-10 w-full">
                 <Navigation />
 
             </div>
-            <div className="bg-gray-50 h-screen overflow-y-auto mt-10">
-                <div className="mt-20">
+            <div className="bg-gray-50  overflow-y-auto my-20">
+                <div className="my-20">
                     <div className="items-center justify-center">
                         <div className="grid md:gap-10 md:grid-cols-4 grid-cols-2 gap-2 md:mx-10 mt-10">
                             {
@@ -47,9 +47,10 @@ const LikedProduct = () => {
                         </div>
 
                     </div>
-                </div>
-            </div>
 
+                </div>
+
+            </div>
         </>
 
     )

@@ -16,9 +16,9 @@ const BidModal = (props) => {
             bid(props?.product_id, {
                 username: (JSON.parse((localStorage.getItem('username') as any))?.username) ?? 'No User',
                 latest_bid: bidamount
-            }).then((res) => {
+            }).then(() => {
                 props.updateLatestBid(bidamount);
-                toast.success('You have placed you bid succesfully!')
+                toast.success('You have placed your bid succesfully!')
             })
                 .finally(() => {
                     props.closeModal();
