@@ -19,7 +19,6 @@ const Login = () => {
             password: password,
         }).then((res) => {
             console.log(res);
-
             localStorage.setItem("username", JSON.stringify(res.data.data));
             navigate("/home");
         }).catch((err) => {
