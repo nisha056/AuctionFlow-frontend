@@ -19,7 +19,6 @@ const Login = () => {
             username: username,
             password: password,
         }).then((res) => {
-            console.log(res);
             localStorage.setItem("username", JSON.stringify(res.data.data));
             navigate("/home");
         }).catch((err) => {
@@ -31,14 +30,14 @@ const Login = () => {
 
     return (
         <>
-            <div className=" bg-gray-500">
-                <div className="flex flex-col items-center justify-center gap-4 h-screen  ">
-                    <div className=" bg-gray-300 rounded-lg shadow py-8  ">
+            <div className="bg-sky-100">
+                <div className="flex flex-col items-center justify-center gap-4 h-screen ">
+                    <div className="bg-sky-50 rounded-lg shadow-lg py-8 ">
                         <div className="p-6">
-                            <form onSubmit={handleSubmit} className="">
+                            <form onSubmit={handleSubmit} >
                                 <div>
                                     <h1 className="flex items-center justify-center text-2xl text-gray-600 font-bold">Log In</h1>
-                                    <label className=" text-sm font-medium text-gray">
+                                    <label className="text-sm font-medium text-gray">
                                         Username
                                     </label>
                                     <input
@@ -46,11 +45,12 @@ const Login = () => {
                                         name="username"
                                         id="username"
                                         onChange={handleUsername}
-                                        className="bg-white  border-gray-300 text-black sm:text-sm rounded-lg   w-full p-2 "
+                                        className="text-black shadow-lg sm:text-sm rounded-lg w-full p-2 focus:outline-none"
+                                        required
                                     />
                                 </div>
                                 <div>
-                                    <label className=" text-sm font-medium text-gray ">
+                                    <label className="text-sm font-medium text-gray ">
                                         Password
                                     </label>
                                     <input
@@ -58,7 +58,8 @@ const Login = () => {
                                         name-="password"
                                         id="password"
                                         onChange={handlePassword}
-                                        className="bg-white border-gray-300 text-black sm:text-sm rounded-lg w-full p-2"
+                                        className="text-black sm:text-sm shadow-lg rounded-lg w-full p-2 focus:outline-none"
+                                        required
                                     />
                                 </div>
                                 <div>

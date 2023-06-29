@@ -1,17 +1,13 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { bid } from "../../api/api";
-
-
-
 const BidModal = (props) => {
     let [bidamount, setBidamount] = useState<number>();
     const handleBidamount = (e: any) => {
         setBidamount(Number(e.target.value));
     };
-
-
-    const handleClick = () => {
+    const handleClick = async () => {
         try {
             bid(props?.product_id, {
                 username: (JSON.parse((localStorage.getItem('username') as any))?.username) ?? 'No User',
@@ -25,6 +21,7 @@ const BidModal = (props) => {
                 })
                 .catch((err) => {
                     console.log(err);
+                    toast.error("The bid amount must be higher than existing bid!")
                 })
         }
         catch (err) {
@@ -32,12 +29,11 @@ const BidModal = (props) => {
         }
 
     }
-
     return (
         <>
             <div className="flex flex-col justify-center items-center mt-5 ">
                 <form className="space-y-7 items-center">
-                    <input className="w-full p-3  rounded-lg placeholder-gray-400 border " placeholder="Enter the bid amount " onChange={handleBidamount} />
+                    <input className="w-full p-3  rounded-lg placeholder-gray-400 border focus:outline-none" placeholder="Enter the bid amount " onChange={handleBidamount} />
                 </form>
             </div>
             <div className="mt-5 flex flex-col items-center justify-center">
@@ -47,5 +43,4 @@ const BidModal = (props) => {
         </>
     );
 };
-
 export default BidModal;

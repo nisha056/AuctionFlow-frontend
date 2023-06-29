@@ -19,7 +19,6 @@ const SignUp = () => {
             username: username,
             password: password,
         }).then((res) => {
-            console.log(res);
             navigate("/login");
         }).catch((err) => {
             console.log(err);
@@ -29,14 +28,13 @@ const SignUp = () => {
     return (
         <>
 
-            <div className=" bg-gray-500">
+            <div className=" bg-sky-100">
                 <div className="flex flex-col items-center justify-center gap-4 h-screen  ">
-                    <div className=" bg-gray-300 rounded-lg shadow py-8  ">
+                    <div className=" bg-sky-50 rounded-lg shadow-lg py-8  ">
                         <div className="p-6">
                             <form onSubmit={handleSubmit}>
                                 <div>
                                     <h1 className="flex items-center justify-center text-2xl text-gray-600 font-bold">Sign Up</h1>
-
                                     <label className=" text-sm font-medium text-gray">
                                         Username
                                     </label>
@@ -45,12 +43,11 @@ const SignUp = () => {
                                         name="username"
                                         id="username"
                                         onChange={handleUsername}
-                                        className="bg-white  border-gray-300 text-black sm:text-sm rounded-lg   w-full p-2 "
-                                        autoComplete="username"
-                                    />
+                                        className="text-black sm:text-sm rounded-lg focus:outline-none w-full p-2 shadow-lg "
+                                        required />
                                 </div>
                                 <div>
-                                    <label className=" text-sm font-medium text-gray ">
+                                    <label className="text-sm font-medium text-gray ">
                                         Password
                                     </label>
                                     <input
@@ -58,8 +55,8 @@ const SignUp = () => {
                                         name="password"
                                         id="password"
                                         onChange={handlePassword}
-                                        className="bg-white border-gray-300 text-black sm:text-sm rounded-lg w-full p-2"
-                                        autoComplete="current-password"
+                                        className="text-black sm:text-sm rounded-lg w-full p-2 focus:outline-none shadow-lg"
+                                        required
                                     />
                                 </div>
                                 <div>
