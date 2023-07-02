@@ -12,10 +12,8 @@ const Footer = () => {
                 <div className="flex items-center justify-center">
                     <div className="text-gray-600"> @Copyright All rights reserved</div>
                 </div>
-
             </div>
         </>
-
     );
 }
 export default Footer;

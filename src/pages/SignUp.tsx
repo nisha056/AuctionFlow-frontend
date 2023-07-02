@@ -14,11 +14,10 @@ const SignUp = () => {
     }
     const handleSubmit = (event: any) => {
         event.preventDefault();
-
         axios.post("http://localhost:8000/users/signup", {
             username: username,
             password: password,
-        }).then((res) => {
+        }).then(() => {
             navigate("/login");
         }).catch((err) => {
             console.log(err);
@@ -81,7 +80,6 @@ const SignUp = () => {
                 </div>
             </div>
         </>
-
     );
 };
 export default SignUp;

@@ -1,20 +1,26 @@
+import { Card } from "@mantine/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
-
-const ProductDetails = (props: any) => {
-    const [extraInfos, setExtraInfos] = useState([]);
-    useEffect(() => {
-        fetchDescription();
-    }, []);
+import { Link, useParams } from "react-router-dom";
+import Navigation from "../../pages/Navigation";
+const ProductDetails = () => {
+    const { id } = useParams();
+    const [extraInfo, setExtraInfo] = useState(null);
+    const [title, setTitle] = useState(null);
+    const [image, setImage] = useState(null);
+    const [startingprice, setStartingprice] = useState(null);
+    const [latestbid, setLatestbid] = useState(null);
+    const [date, setDate] = useState(null);
     const fetchDescription = async () => {
         try {
-            console.log(props);
-            axios.put(`http://localhost:8000/products/${props?.product_id}`, {
-                extraInfo: extraInfos,
-            }).then((res) => {
+            axios.get(`http://localhost:8000/products/details/${id}`).then((res) => {
                 console.log(res);
-                setExtraInfos(res.data?.data);
+                setTitle(res.data?.updatedProduct?.title);
+                setDate(res.data?.updatedProduct?.enddate)
+                setStartingprice(res.data?.updatedProduct?.starting_amount);
+                setLatestbid(res.data?.updatedProduct?.latest_bid);
+                setImage(res.data?.updatedProduct?.image);
+                setExtraInfo(res.data?.updatedProduct?.extraInfo);
             }).catch((err) => {
                 console.log(err);
             })
@@ -24,29 +30,44 @@ const ProductDetails = (props: any) => {
 
         }
     }
+    useEffect(() => {
+        fetchDescription();
+    }, []);
     return (
         <>
-            <div className="bg-gray-50  overflow-y-auto my-20">
-                <div className="my-20">
-                    <div className="items-center justify-center">
-                        <div className="grid md:gap-10 md:grid-cols-4 grid-cols-2 gap-2 md:mx-10 mt-10">
-                            {
-
-                                extraInfos?.map((product: any) => {
-                                    return (
-                                        <ProductCard key={product._id} details={product} />
-
-                                    )
-                                })
-                            }
-                        </div>
-
-                    </div>
-
+            <div className="fixed top-0 z-10 w-full">
+                <Navigation />
+            </div>
+            <div className=" mx-10 mt-20 flex justify-between ">
+                <div className="flex items-center w-full h-full mt-20">
+                    <img src={image}
+                        alt="item"
+                        className="   "
+                    />
                 </div>
 
+                <div className="flex w-full my-20 mx-10">
+                    <Card className="p-0" >
+                        <p className="text-red-400 flex  text-xl font-medium uppercase tracking-wider my-3">Bidding ends on {date?.slice(0, 10)}</p>
+                        <p className="text-gray-400 flex  text-xs font-medium uppercase tracking-wider my-3"><em>So hurry up and grab this opportunity !</em></p>
+                        <Link to="/home">
+                            <p className="text-gray-400 flex  text-xs font-medium uppercase tracking-wider my-3"><em>Visit the home page for biding product </em></p>
+                        </Link>
+                        <div className="flex w-full md:gap-5 text-sm my-20 ">
+                            <div className="flex w-1/2 flex-col gap-1">
+                                <div className="text-gray-600 text-xs uppercase tracking-wider ">Starting Price</div>
+                                <div className="text-xl font-medium">{startingprice}</div>
+                            </div>
+                            <div className="flex w-1/2 flex-col gap-1 ">
+                                <div className="text-gray-600 text-xs uppercase tracking-wider">Latest Bid</div>
+                                <div className="text-xl font-medium">{latestbid}</div>
+                            </div>
+                        </div>
+                    </Card>
+                </div>
             </div>
-
+            <p className="text-2xl text-gray-700 font-bold mx-10 my-5 ">{title}</p>
+            <p className="mx-10 text-gray-700">{extraInfo}</p>
         </>
 
     );

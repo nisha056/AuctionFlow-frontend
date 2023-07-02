@@ -4,12 +4,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
-    const [user, setUser] = useState<any | null>(JSON.parse(localStorage.getItem("username") as any));
+    const [user, setUser] = useState<any | null>(JSON.parse(localStorage.getItem("username") as string));
     const navigate = useNavigate();
 
     const handleClick = () => {
         localStorage.removeItem("username");
-        console.log("logged out");
         navigate("/login");
     }
 

@@ -1,12 +1,9 @@
-
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Navigation from "../Navigation";
-
-import LikedCard from "./likedCard";
-
-const LikedProduct = () => {
-    const [likes, setLikes] = useState<any | null>([]);
+import Navigation from "../../pages/Navigation";
+import LikedCard from "./LikedCard";
+const LikedProduct: React.FC = () => {
+    const [likes, setLikes] = useState<any[]>([]);
     useEffect(() => {
         fetchLikedItems();
     }, []);
@@ -22,7 +19,6 @@ const LikedProduct = () => {
             console.error(err);
         }
     };
-
     return (
         <>
             <div className="fixed top-0 z-10 w-full">
@@ -38,7 +34,6 @@ const LikedProduct = () => {
                                     likes?.map((product: any) => {
                                         return (
                                             <LikedCard key={product._id} details={product} />
-
                                         )
                                     })
                                     :

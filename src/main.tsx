@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './components/home/home'
 import ProductDetails from './components/home/ProductDetails'
-import LikedProduct from './components/likeProducts/likedProduct'
-import Login from './components/Login'
-import SignUp from './components/signup'
-import ErrorPage from './ErrorPage'
-import Footer from './Footer'
+import LikedProduct from './components/likeProducts/LikedProduct'
+
 import './index.css'
+import ErrorPage from './pages/ErrorPage'
+import Footer from './pages/Footer'
+import Login from './pages/Login'
+import SignUp from './pages/SignUp'
 import Root from './routes/root'
 
 const router = createBrowserRouter([
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         element: <Footer />
       },
       {
-        path: "/product_details/:productId",
+        path: "/products/details/:id",
         element: <ProductDetails />
       }
     ]

@@ -2,10 +2,10 @@ import { Pagination } from "@mantine/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { product } from "../../api/api";
-import Footer from "../../Footer";
-import Navigation from "../Navigation";
+import Footer from "../../pages/Footer";
+import Navigation from "../../pages/Navigation";
 import HomeCard from "./HomeCard";
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [verified, setVerified] = useState(false)
-    const itemsPerPage = 12;
+    const itemsPerPage = 8;
     const navigate = useNavigate();
     useEffect(() => {
         verifyToken();
@@ -21,10 +21,9 @@ const Home = () => {
 
     const verifyToken = async () => {
         try {
-            const token = (JSON.parse((localStorage.getItem('username') as any))?.jwt)
+            let token = (JSON.parse((localStorage.getItem('username') as string))?.jwt)
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-            const response = await axios.post("http://localhost:8000/users/verifytoken")
-            if (response.status === 200) {
+            if (token = JSON.parse((localStorage.getItem('username') as any))?.jwt) {
                 setVerified(true);
                 fetchProducts(currentPage);
             }
@@ -37,7 +36,6 @@ const Home = () => {
         }
 
     }
-
     const fetchProducts = (page: number) => {
         product()
             .then((res) => {
@@ -46,8 +44,8 @@ const Home = () => {
                 const endIndex = startIndex + itemsPerPage;
                 const usersData = value.slice(startIndex, endIndex);
                 setUsers(usersData);
-                const total = Math.ceil(value.length / itemsPerPage);
-                setTotalPages(total);
+                //const total = Math.ceil(value.length / itemsPerPage);
+                setTotalPages(5);
             })
             .catch((err) => {
                 console.log(err);
@@ -82,5 +80,4 @@ const Home = () => {
         </>
     );
 };
-
 export default Home;
