@@ -22,7 +22,6 @@ const Login = () => {
         }).catch((err) => {
             console.log(err);
         })
-
     }
     return (
         <>
@@ -67,7 +66,6 @@ const Login = () => {
                                     </button>
                                 </div>
                             </form>
-
                             <div className="flex gap-3">
                                 <p className="font-medium mt-5 ">
                                     Didn't have an account?

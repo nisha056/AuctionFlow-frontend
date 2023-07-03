@@ -6,14 +6,11 @@ interface BidModalProps {
     updateLatestBid: (latestBid: number) => void;
     closeModal: () => void;
 }
-
 const BidModal: React.FC<BidModalProps> = ({ product_id, updateLatestBid, closeModal }) => {
     const [bidamount, setBidamount] = useState<number>();
-
     const handleBidamount = (e) => {
         setBidamount(Number(e.target.value));
     };
-
     const handleClick = async () => {
         try {
             bid(product_id, {
@@ -29,13 +26,12 @@ const BidModal: React.FC<BidModalProps> = ({ product_id, updateLatestBid, closeM
                 })
                 .catch((err) => {
                     console.log(err);
-                    toast.error("The bid amount must be higher than the existing bid!");
+                    toast.error("Error occured");
                 });
         } catch (err) {
             console.error(err);
         }
     };
-
     return (
         <>
             <div className="flex flex-col justify-center items-center mt-5">
@@ -56,5 +52,4 @@ const BidModal: React.FC<BidModalProps> = ({ product_id, updateLatestBid, closeM
         </>
     );
 };
-
 export default BidModal;

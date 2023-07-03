@@ -24,10 +24,8 @@ const ProductDetails = () => {
             }).catch((err) => {
                 console.log(err);
             })
-
         } catch (err) {
             console.log(err);
-
         }
     }
     useEffect(() => {
@@ -38,38 +36,41 @@ const ProductDetails = () => {
             <div className="fixed top-0 z-10 w-full">
                 <Navigation />
             </div>
-            <div className=" mx-10 mt-20 flex justify-between ">
-                <div className="flex items-center w-full h-full mt-20">
+            <div className=" mx-10 mt-20 md:flex md:justify-between ">
+                <div className="md:flex md:items-center w-full h-full  mt-20 ">
                     <img src={image}
                         alt="item"
-                        className="   "
+                        className=""
                     />
                 </div>
-
-                <div className="flex w-full my-20 mx-10">
+                <div className="flex w-full md:my-20 my-5 md:mx-10">
                     <Card className="p-0" >
-                        <p className="text-red-400 flex  text-xl font-medium uppercase tracking-wider my-3">Bidding ends on {date?.slice(0, 10)}</p>
-                        <p className="text-gray-400 flex  text-xs font-medium uppercase tracking-wider my-3"><em>So hurry up and grab this opportunity !</em></p>
+                        <p className="text-red-400 flex  text-xl font-medium uppercase tracking-wider md:my-3  ">Bidding ends on {date?.slice(0, 10)}</p>
+                        <p className="text-gray-500 flex  text-xs font-medium uppercase tracking-wider  my-3 "><em>So hurry up and grab this opportunity !</em></p>
                         <Link to="/home">
-                            <p className="text-gray-400 flex  text-xs font-medium uppercase tracking-wider my-3"><em>Visit the home page for biding product </em></p>
+                            <p className="text-gray-500 flex  text-xs font-medium uppercase tracking-wider my-3"><em>Visit the home page for biding product </em></p>
                         </Link>
-                        <div className="flex w-full md:gap-5 text-sm my-20 ">
+                        <div className="flex w-full md:gap-5 text-sm md:my-20 my-3 ">
                             <div className="flex w-1/2 flex-col gap-1">
-                                <div className="text-gray-600 text-xs uppercase tracking-wider ">Starting Price</div>
+                                <div className="text-gray-800 text-xs uppercase tracking-wider ">Starting Price</div>
                                 <div className="text-xl font-medium">{startingprice}</div>
                             </div>
                             <div className="flex w-1/2 flex-col gap-1 ">
-                                <div className="text-gray-600 text-xs uppercase tracking-wider">Latest Bid</div>
+                                <div className="text-gray-800 text-xs uppercase tracking-wider">Latest Bid</div>
                                 <div className="text-xl font-medium">{latestbid}</div>
                             </div>
                         </div>
                     </Card>
                 </div>
             </div>
-            <p className="text-2xl text-gray-700 font-bold mx-10 my-5 ">{title}</p>
+            <p className="text-2xl text-gray-700 font-bold mx-10 my-3 ">{title}</p>
             <p className="mx-10 text-gray-700">{extraInfo}</p>
+            <div className="md:hidden">
+                <Link to="/home">
+                    <button className="px-5 py-2 mx-10 bg-sky-600 rounded text-white my-10">Return</button>
+                </Link>
+            </div>
         </>
-
     );
 }
 export default ProductDetails;

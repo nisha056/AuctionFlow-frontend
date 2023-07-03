@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 const SignUp = () => {
     let [username, setUsername] = useState();
     let [password, setPassword] = useState();
@@ -22,11 +21,9 @@ const SignUp = () => {
         }).catch((err) => {
             console.log(err);
         })
-
     }
     return (
         <>
-
             <div className=" bg-sky-100">
                 <div className="flex flex-col items-center justify-center gap-4 h-screen  ">
                     <div className=" bg-sky-50 rounded-lg shadow-lg py-8  ">
@@ -66,7 +63,6 @@ const SignUp = () => {
                                     </button>
                                 </div>
                             </form>
-
                             <div className="flex gap-3">
                                 <p className="font-medium mt-5 ">
                                     Already have an account?

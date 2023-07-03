@@ -1,6 +1,5 @@
 import { Card } from "@mantine/core";
 import React from "react";
-
 interface LikedCardProps {
     details: {
         image: string;
@@ -10,7 +9,6 @@ interface LikedCardProps {
         latest_bid: number;
     };
 }
-
 const LikedCard: React.FC<LikedCardProps> = ({ details }) => {
     return (
         <>

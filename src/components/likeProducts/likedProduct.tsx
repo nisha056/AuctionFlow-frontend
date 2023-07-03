@@ -23,7 +23,6 @@ const LikedProduct: React.FC = () => {
         <>
             <div className="fixed top-0 z-10 w-full">
                 <Navigation />
-
             </div>
             <div className="bg-gray-50  overflow-y-auto my-20">
                 <div className="my-20">
@@ -40,14 +39,10 @@ const LikedProduct: React.FC = () => {
                                     <>No Items to show</>
                             }
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         </>
-
     )
 };
 export default LikedProduct;

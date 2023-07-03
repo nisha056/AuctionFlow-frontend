@@ -4,14 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './components/home/home'
 import ProductDetails from './components/home/ProductDetails'
 import LikedProduct from './components/likeProducts/LikedProduct'
-
 import './index.css'
 import ErrorPage from './pages/ErrorPage'
 import Footer from './pages/Footer'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import Root from './routes/root'
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,7 +47,6 @@ const router = createBrowserRouter([
     ]
   }
 ])
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
