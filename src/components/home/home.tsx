@@ -7,7 +7,6 @@ import { product } from "../../api/api";
 import Footer from "../../pages/Footer";
 import Navigation from "../../pages/Navigation";
 import HomeCard from "./HomeCard";
-
 const Home = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);

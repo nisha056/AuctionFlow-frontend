@@ -33,11 +33,11 @@ const ProductDetails = () => {
     }, []);
     return (
         <>
-            <div className="fixed top-0 z-10 w-full">
+            <div className="fixed top-0 z-10 w-full ">
                 <Navigation />
             </div>
             <div className=" mx-10 mt-20 md:flex md:justify-between ">
-                <div className="md:flex md:items-center w-full h-full  mt-20 ">
+                <div className="md:flex md:items-center w-full h-full mt-20 pt-10 md:py-0">
                     <img src={image}
                         alt="item"
                         className=""
